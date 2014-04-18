@@ -40,7 +40,7 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-
+  
   <build>
     <plugins>
       <plugin>
@@ -48,7 +48,7 @@
         <artifactId>maven-plugin-plugin</artifactId>
         <version>3.2</version>
         <configuration>
-          <goalPrefix>neptical-maven-plugin</goalPrefix>
+          <goalPrefix>neptical</goalPrefix>
           <skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
         </configuration>
         <executions>
@@ -66,14 +66,37 @@
           </execution>
         </executions>
       </plugin>
+       			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+				<executions>
+					<execution>
+						<id>default-testCompile</id>
+						<phase>test-compile</phase>
+						<goals>
+							<goal>testCompile</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>default-compile</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
     </plugins>
   </build>
-  <profiles>
+  <profiles>  
     <profile>
       <id>run-its</id>
       <build>
-
-        <plugins>
+        <plugins>  
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-invoker-plugin</artifactId>
@@ -102,10 +125,11 @@
                 </goals>
               </execution>
             </executions>
-          </plugin>
+          </plugin>         
+          
         </plugins>
-
       </build>
     </profile>
   </profiles>
+  
 </project>
